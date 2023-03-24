@@ -1,0 +1,8 @@
+.nav-container{
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 142px;
+    padding-right: 100px;
+}

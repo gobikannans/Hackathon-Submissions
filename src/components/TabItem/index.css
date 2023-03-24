@@ -1,0 +1,21 @@
+.btn-style {
+    background-color: transparent;
+    font-size: 18px;
+    color: #7b8794;
+    border-width: 0px 0px 1px 0px;
+    border-color: #dfe2e5;
+    padding: 20px;
+    padding-bottom: 0px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 48px;
+
+  }
+  
+  .active-tab {
+    color: #333333;
+    border-width: 0px 0px 3px 0px;
+    border-style: solid;
+    border-color: #44924C;
+  }
