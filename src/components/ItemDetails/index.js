@@ -119,7 +119,9 @@ export default function ItemDetails(props){
         <div className="details-description-conatiner">
             <div className="description-container">
                 <h1 className="desc-title">Description</h1>
+                <div style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}>
                 <p className="desc-para">{dataList[0].description}</p>
+                </div>
             </div>
             <div className="other-details">
                 <p className="desc-name">Hackathon</p>
