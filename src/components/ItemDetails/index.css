@@ -40,7 +40,7 @@
 }
 
 .details-img{
-    width: 130px;
+    width: 135px;
     height: 120px;
     border-radius: 10px;
     margin-right: 40px;
@@ -131,7 +131,7 @@
     padding-left: 142px;
     padding-right: 142px;
     padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 100px;
 }
 
 .description-container{
