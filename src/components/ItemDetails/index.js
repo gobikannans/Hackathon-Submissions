@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {Link} from "react-router-dom"
 import {useParams } from "react-router-dom";
 import {AiFillStar,AiTwotoneCalendar,AiFillGithub} from "react-icons/ai"
@@ -56,7 +56,6 @@ export default function ItemDetails(props){
         }
         localStorage.removeItem("submissionData")
         localStorage.setItem("submissionData",JSON.stringify(submissionData))
-        navigate("../")
     }
 
     const onClickRemoveModel=()=>{
@@ -65,6 +64,11 @@ export default function ItemDetails(props){
         localStorage.setItem('submissionData',JSON.stringify(updatedSubmissionData))
         navigate("../")   
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
     return (
         <>
         <Header/>
@@ -104,7 +108,6 @@ export default function ItemDetails(props){
                     <div className="bottom-details">
                         <div className="star">
                             <button className="star-btn" onClick={onClickStar}> <AiFillStar  size={18} style={{color:active?"yellow":"#ffffff",marginTop:"3px"}}/></button>
-                            
                         </div>
                         <div className="hr-line">
                             <p style={{margin:"0px"}}>|</p>

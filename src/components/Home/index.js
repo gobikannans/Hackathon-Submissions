@@ -38,9 +38,7 @@ const sortByOptions = [
     state={submissionListData:[],searchValue:'',activeTabId:tabsList[0].tabId,selectedSortByValue:sortByOptions[0].value,apiStatus:apiStatusConstants.initial}
 
     componentDidMount(){
-      window.scrollTo(0, 0)
-      this.getSubmissionData()
-      
+      this.getSubmissionData()      
     }
 
     getSubmissionData=()=>{
