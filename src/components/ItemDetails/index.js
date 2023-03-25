@@ -56,7 +56,6 @@ export default function ItemDetails(props){
         }
         localStorage.removeItem("submissionData")
         localStorage.setItem("submissionData",JSON.stringify(submissionData))
-        navigate("../")
     }
 
     const onClickRemoveModel=()=>{
