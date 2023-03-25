@@ -1,7 +1,7 @@
 import React from "react"
 import{v4 as uuidv4} from "uuid"
 import Header from "../Header"
-import { useState } from "react"
+import { useState,useEffect} from "react"
 import { MdCloudUpload} from 'react-icons/md'
 import "./index.css"
 import { useNavigate } from "react-router-dom"
@@ -129,10 +129,10 @@ export default function SubmissionForm(){
     )
   }
 
+    useEffect(() => {
+      window.scrollTo(0, 0)
+    }, [])  
 
-  
-
-  
 
         return(
             <>
