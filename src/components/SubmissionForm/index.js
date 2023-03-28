@@ -21,32 +21,42 @@ export default function SubmissionForm(){
 
   const [image, setImage] = useState(null)
   const [fileName, setFileName] = useState("No selected file")
+  const [formError,setFormError]=useState(false)
 
 
 
   const onSubmitForm=(event)=>{
     event.preventDefault()
     const submissionData=JSON.parse(localStorage.getItem('submissionData'))|| []
-    const newSubmission={
-      id:uuidv4(),
-      title,
-      summary,
-      description,
-      image,
-      fileName,
-      name,
-      startDate,
-      endDate,
-      githubUrl,
-      otherLinks,
-      submissionType:"ALL",
-      favoriteType:"NO",
-      count,
-      date:new Date()
+
+    if(title==="" || summary==="" || description==="" || image==="" || name==="" || startDate==="" || endDate==="" || githubUrl==="" || otherLinks===""){
+      setFormError(true)
     }
-    submissionData.push(newSubmission)
-    localStorage.setItem("submissionData",JSON.stringify(submissionData))
-    navigate('../')
+    else{
+      const newSubmission={
+        id:uuidv4(),
+        title,
+        summary,
+        description,
+        image,
+        fileName,
+        name,
+        startDate,
+        endDate,
+        githubUrl,
+        otherLinks,
+        submissionType:"ALL",
+        favoriteType:"NO",
+        count,
+        date:new Date()
+      }
+      submissionData.push(newSubmission)
+      localStorage.setItem("submissionData",JSON.stringify(submissionData))
+      navigate('../')
+    }
+
+
+    
   }
 
 
@@ -102,7 +112,7 @@ export default function SubmissionForm(){
   const imageUploader=()=>{
      return( 
        <main>
-         <form className="form" onClick={() => document.querySelector(".input-field").click() }>
+         <form novalidate className="form" onClick={() => document.querySelector(".input-field").click() }>
           <input type="file" accept='image/*' className='input-field' hidden 
             onChange={onChangeImg}
          />
@@ -140,10 +150,11 @@ export default function SubmissionForm(){
             <div className="form-bg-container">
                 <div className="form-container">
                     <h1 className="form-heading">New Hackathon Submission</h1>
-                    <form className="main-container" onSubmit={onSubmitForm}>
+                    <form className="main-container"   onSubmit={onSubmitForm}>
                       <div className="form-item-container">  
                         <label htmlFor="title">Title</label>
                         <input id="title" type="text" placeholder="Title of your submission" value={title} onChange={onChangeTitle} className="input" />
+                        
                       </div>
 
                       <div className="form-item-container">  
@@ -171,12 +182,12 @@ export default function SubmissionForm(){
                       <div className="form-date-container">  
                         <div className="date-container">
                           <label htmlFor="start-date">Hackathon Start Date</label>
-                          <input id="start-date" type="date" placeholder="Select start date" value={startDate} onChange={onChangeStartDate} className="input-date" required/>
+                          <input id="start-date" form="novalidateform" type="date" placeholder="Select start date" value={startDate} onChange={onChangeStartDate} className="input-date" required/>
 
                         </div>
                         <div className="date-container">
                           <label htmlFor="end-date">Hackathon End Date</label>
-                          <input id="end-date" type="date" placeholder="Select end date" value={endDate} onChange={onChangeEndDate} className="input-date" required/>
+                          <input id="end-date" form="novalidateform" type="date" placeholder="Select end date" value={endDate} onChange={onChangeEndDate} className="input-date" required/>
                         </div>
                       </div>
 
@@ -190,7 +201,8 @@ export default function SubmissionForm(){
                         <input id="other-links" type="text" placeholder="You can upload a video demo or URL of you demo app here." value={otherLinks} onChange={onChangeLinks} className="input"/>
                       </div>
 
-                      <button className="form-btn" type="submit">Upload Submission</button>
+                      <button className="form-btn" type="submit" >Upload Submission</button>
+                      <p className="error-msg">{formError? "*Please fill all the required Details":" "} </p>
                     </form>
                 </div>
             </div>

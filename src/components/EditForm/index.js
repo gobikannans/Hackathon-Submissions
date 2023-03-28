@@ -35,6 +35,7 @@ export default function EditForm(){
 
   const [image, setImage] = useState(dataList[0].image)
   const [fileName, setFileName] = useState(dataList[0].fileName)
+  const[formError,setFormError]=useState(false) 
   
 
 
@@ -49,32 +50,36 @@ export default function EditForm(){
        return null
       }
     )
-     
     const fav=dataList[0].favoriteType
     const sub=dataList[0].submissionType
 
-
-    const newSubmission={
-      id:id,
-      title,
-      summary,
-      description,
-      image,
-      fileName,
-      name,
-      startDate,
-      endDate,
-      githubUrl,
-      otherLinks,
-      favoriteType:fav,
-      submissionType:sub,
-      count,
-      date:new Date(),
+    if(title==="" || summary==="" || description==="" || image==="" || name==="" || startDate==="" || endDate==="" || githubUrl==="" || otherLinks===""){
+      setFormError(true)
+    }
+    else{
+      const newSubmission={
+        id:id,
+        title,
+        summary,
+        description,
+        image,
+        fileName,
+        name,
+        startDate,
+        endDate,
+        githubUrl,
+        otherLinks,
+        favoriteType:fav,
+        submissionType:sub,
+        count,
+        date:new Date(),
     }
     updatedSubmissionData.push(newSubmission)
     
     localStorage.setItem("submissionData",JSON.stringify(updatedSubmissionData))
     navigate('../')
+  }
+    
   }
 
 
@@ -196,12 +201,12 @@ export default function EditForm(){
                       <div className="form-date-container">  
                         <div className="date-container">
                           <label htmlFor="start-date">Hackathon Start Date</label>
-                          <input id="start-date" type="date" placeholder="Select start date" value={startDate} onChange={onChangeStartDate} className="input-date" required/>
+                          <input id="start-date" type="date" form="novalidateform" placeholder="Select start date" value={startDate} onChange={onChangeStartDate} className="input-date" required/>
 
                         </div>
                         <div className="date-container">
                           <label htmlFor="end-date">Hackathon End Date</label>
-                          <input id="end-date" type="date" placeholder="Select end date" value={endDate} onChange={onChangeEndDate} className="input-date" required/>
+                          <input id="end-date" type="date" form="novalidateform" placeholder="Select end date" value={endDate} onChange={onChangeEndDate} className="input-date" required/>
                         </div>
                       </div>
 
@@ -216,6 +221,7 @@ export default function EditForm(){
                       </div>
 
                       <button className="form-btn" type="submit">Save Submission</button>
+                      <p className="error-msg">{formError? "*Please fill all the required Details":" "} </p>
                     </form>
                 </div>
             </div>

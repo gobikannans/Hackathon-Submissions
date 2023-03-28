@@ -229,3 +229,9 @@ input[type="date"]:valid::before {
     display: flex;
     align-items: center;
   }
+
+  .error-msg{
+    font-family: "Poppins";
+    font-size: 13px;
+    color: red;
+  }
