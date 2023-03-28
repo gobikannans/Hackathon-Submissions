@@ -55,6 +55,7 @@ export default function EditForm(){
 
     if(title==="" || summary==="" || description==="" || image==="" || name==="" || startDate==="" || endDate==="" || githubUrl==="" || otherLinks===""){
       setFormError(true)
+      setTimeout(()=>setFormError(false),8000)
     }
     else{
       const newSubmission={

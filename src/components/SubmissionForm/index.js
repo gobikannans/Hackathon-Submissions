@@ -31,6 +31,7 @@ export default function SubmissionForm(){
 
     if(title==="" || summary==="" || description==="" || image==="" || name==="" || startDate==="" || endDate==="" || githubUrl==="" || otherLinks===""){
       setFormError(true)
+      setTimeout(()=>setFormError(false),8000)
     }
     else{
       const newSubmission={
@@ -142,6 +143,7 @@ export default function SubmissionForm(){
     useEffect(() => {
       window.scrollTo(0, 0)
     }, [])  
+
 
 
         return(
